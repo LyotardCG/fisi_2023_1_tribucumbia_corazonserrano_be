@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 9000);
 
 /* ruta principal */
 app.get('/', (req, res) => {
-    res.send('Bienvenido a la API Usuarios');
+    res.send('Bienvenido a la API Reservaciones');
 })
 
 const whitelist = [
@@ -29,7 +29,8 @@ const options = {
     }
 }
 
-app.use(cors(options));
+//app.use(cors(options));
+app.use(cors());
 
 
 app.use(express.json());
