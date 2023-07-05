@@ -1,0 +1,23 @@
+# Establece la imagen base a utilizar
+FROM node:16.14.2
+
+# Establece la carpeta de trabajo en el contenedor
+WORKDIR /app
+
+# Copia el archivo package.json al contenedor
+COPY package.json .
+
+# Copia el archivo package-lock.json al contenedor
+COPY package-lock.json .
+
+# Instala las dependencias de node
+RUN npm install
+
+# Copia el resto de los archivos del proyecto al contenedor
+COPY . .
+
+# Expone el puerto 9000 al exterior del contenedor
+EXPOSE 9000
+
+# Ejecuta el proyecto al iniciar el contenedor
+CMD ["npm", "start"]

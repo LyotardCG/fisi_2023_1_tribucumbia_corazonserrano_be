@@ -1,0 +1,37 @@
+{
+  "name": "api-reservacion",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-myconnection": "^1.0.4",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "qrcode": "^1.5.3",
+    "sha256": "^0.2.0",
+    "sha256-es": "^1.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garguijo1/api_labisteca.git"
+  },
+  "bugs": {
+    "url": "https://github.com/garguijo1/api_labisteca/issues"
+  },
+  "homepage": "https://github.com/garguijo1/api_labisteca#readme",
+  "description": ""
+}
