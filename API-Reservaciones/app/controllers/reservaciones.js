@@ -38,12 +38,16 @@ const crearReservacion = async (req, res) => {
         if(nuevaReservacion <= 0) {
             throw new CustomHttpError("Error en la creacion de la reserva");
         }
-        console.log(nuevaReservacion)
+        //console.log(nuevaReservacion)
 
         const qrCode = await QRCode.toDataURL(nuevaReservacion.toString())
         await serviceReservas.addQR(nuevaReservacion, qrCode)
 
-        res.status(201).send({ mensaje: "Reserva creada correctamente" })
+        res.status(201).send({
+            mensaje: "Reserva creada correctamente",
+            id: nuevaReservacion,
+            qr: qrCode
+        })
 
     } catch (e) {
         //httpError(res, e)
@@ -90,6 +94,12 @@ const obtenerReservasCliente = async (req,res)=>{
             throw new CustomHttpError(`No hay reservas registradas para el cliente con el id: ${id_cliente}`, 404);
         };
 
+        reservasCliente.forEach(reserva => {
+            //console.log(reserva.QR)
+            const qr = (reserva.QR) ? reserva.QR : 1
+            reserva.QR = qr.toString()
+        });
+
         res.status(200).send({ reservas: reservasCliente });
         
     } catch (e) {
@@ -105,6 +115,9 @@ const obtenerReservaPorId = async (req,res)=>{
         if(reserva.length<=0){
             throw new CustomHttpError(`No existe una reservación con el id: ${id_reservacion}`, 404)
         };
+
+        const qr = (reserva[0].QR) ? reserva[0].QR : 1
+        reserva[0].QR = qr.toString()
         
         res.status(200).send({ reserva: reserva[0] });
     } catch (e) {
