@@ -57,7 +57,7 @@ class reservacionesServices{
     }
 
     async obtenerReservasCLiente(id){
-        const query = 'SELECT r.idReservacion,r.numero_mesa,r.numero_sillas,r.horario,r.atendido,r.QR,s.nombre,s.direccion FROM reservacion as r INNER JOIN sede as s ON r.IdSede=s.idSede WHERE idUsuario = ?;';
+        const query = "SELECT r.idReservacion,r.numero_mesa,r.numero_sillas,DATE_FORMAT(r.horario,'%d/%m/%Y %H:%i:%s') horario,r.atendido,r.QR,s.nombre,s.direccion FROM reservacion as r INNER JOIN sede as s ON r.IdSede=s.idSede WHERE idUsuario = ?;";
         return new Promise((res, rej) =>{
             this.con.query(query,[id],
                 (error, datos) =>{
