@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 /* seteamos la puerta */
-app.set('port', process.env.PORT || 9001);
+app.set('port', process.env.PORT || 9000);
 
 /* ruta principal */
 app.get('/', (req, res) => {
